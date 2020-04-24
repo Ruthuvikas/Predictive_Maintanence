@@ -6,10 +6,16 @@ import os
 
 curr_dir = 'cnn'
 cwd = os.getcwd() 
-dir_path = os.path.join(cwd,curr_dir)  
+dir_path = os.path.join(cwd,curr_dir)
+dataset_path = 'download'
+
+dataset1 = os.path.join(cwd,dataset_path,'test_X_dataset_ret_0.csv')
+dataset2 = os.path.join(cwd,dataset_path,'test_X_dataset_ret_1.csv')
+dataset3 = os.path.join(cwd,dataset_path,'test_X_dataset_ret_2.csv')
+
 def func():
-	read_path = os.path.join(dir_path,'test_X_dataset_ret_0.csv')
-	df=pd.read_csv(read_path, sep=',',header=None)
+	#read_path = os.path.join(dir_path,'test_X_dataset_ret_0.csv')
+	df=pd.read_csv(dataset1, sep=',',header=None)
 	print(df.values)
 	X_test = df.values
 	load_path = os.path.join(dir_path,'lstm_reg3_modelEPOCHS10.sav')
@@ -26,8 +32,8 @@ def func():
 
 
 def func1():
-	read_path = os.path.join(dir_path,'test_X_dataset_ret_1.csv')
-	df=pd.read_csv(read_path, sep=',',header=None)
+	#read_path = os.path.join(dir_path,'test_X_dataset_ret_1.csv')
+	df=pd.read_csv(dataset2, sep=',',header=None)
 	print(df.values)
 	X_test = df.values
 	load_path = os.path.join(dir_path,'lstm_reg3_modelEPOCHS10.sav')
@@ -44,8 +50,8 @@ def func1():
 	return output
 
 def func2():
-	read_path = os.path.join(dir_path,'test_X_dataset_ret_2.csv')
-	df=pd.read_csv(read_path, sep=',',header=None)
+	#read_path = os.path.join(dir_path,'test_X_dataset_ret_2.csv')
+	df=pd.read_csv(dataset3, sep=',',header=None)
 	print(df.values)
 	X_test = df.values
 	load_path = os.path.join(dir_path,'lstm_reg3_modelEPOCHS10.sav')
@@ -53,14 +59,11 @@ def func2():
 	y_pred = loaded_model.predict(X_test.reshape((1,10,51)))
 	y_pred[0][0] = y_pred[0][0] * 150
 	days = y_pred[0][0] /(60*24)
-	#hrs = y_pred[0][0] / 60
 	rem  = days - int(days)
 	hrs = rem*24
 	rem1 = hrs - int(hrs)
 	mins = rem1 * 60
-	#return int(y_pred[0][0])
 	output = str(int(days)) + "	days	" + str(int(hrs)) + "	hours	" + str(int(mins)) + "	minutes"
-	#print("==========", output)
 	return output
 
 def cnn_main():

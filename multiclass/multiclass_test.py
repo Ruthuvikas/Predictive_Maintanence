@@ -9,11 +9,15 @@ import os
 curr_dir = 'multiclass'
 cwd = os.getcwd() 
 dir_path = os.path.join(cwd,curr_dir)
+dataset_path = 'download'
+
+dataset1 = os.path.join(cwd,dataset_path,'test_X_dataset_ret_0.csv')
+dataset2 = os.path.join(cwd,dataset_path,'test_X_dataset_ret_1.csv')
+dataset3 = os.path.join(cwd,dataset_path,'test_X_dataset_ret_2.csv')
 
 
 def func():
-	read_path = os.path.join(dir_path,'test_X_dataset_ret_0.csv')
-	df=pd.read_csv(read_path, sep=',',header=None)
+	df=pd.read_csv(dataset1, sep=',',header=None)
 	print(df.values)
 	X_test = df.values
 	print("len",len(X_test))
@@ -30,8 +34,7 @@ def func():
 		return "Fail after 200 days"
 	
 def func1():
-	read_path = os.path.join(dir_path,'test_X_dataset_ret_1.csv')
-	df=pd.read_csv(read_path, sep=',',header=None)
+	df=pd.read_csv(dataset2, sep=',',header=None)
 	print(df.values)
 	X_test = df.values
 	print("len",len(X_test))
@@ -47,8 +50,7 @@ def func1():
 		return "Fail after 200 days"
 	
 def func2():
-	read_path = os.path.join(dir_path,'test_X_dataset_ret_2.csv')
-	df=pd.read_csv(read_path, sep=',',header=None)
+	df=pd.read_csv(dataset3, sep=',',header=None)
 	print(df.values)
 	X_test = df.values
 	print("len",len(X_test))

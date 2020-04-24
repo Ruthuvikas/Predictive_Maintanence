@@ -42,7 +42,7 @@ def success():
         print('file==============',UPLOAD_FOLDER + '/' + f.filename)
         f.save(UPLOAD_FOLDER + '/' + f.filename)
         #f.save(f.filename)  
-        return render_template("success.html", name = f.filename) 
+        return
 
 @app.route('/binary_classification',methods = ['GET','POST'])
 def binary_classification():
